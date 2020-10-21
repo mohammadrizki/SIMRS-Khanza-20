@@ -903,6 +903,10 @@ public final class DlgReg extends javax.swing.JDialog {
         MnBlangkoResep = new javax.swing.JMenuItem();
         MnSuratJaminanPelayanan = new javax.swing.JMenuItem();
         MnLembarKeluarMasuk2 = new javax.swing.JMenuItem();
+        MnCetakSuratBebasCovid1 = new javax.swing.JMenuItem();
+        MnCetakSuratBebasCovid2 = new javax.swing.JMenuItem();
+        MnCetakSuratBebasCovidRapid = new javax.swing.JMenuItem();
+        MenCetakSuratBebasCovid3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MnCheckList = new javax.swing.JMenuItem();
         MnCheckList1 = new javax.swing.JMenuItem();
@@ -2362,6 +2366,62 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         jMenu4.add(MnLembarKeluarMasuk2);
+
+        MnCetakSuratBebasCovid1.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakSuratBebasCovid1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakSuratBebasCovid1.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakSuratBebasCovid1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakSuratBebasCovid1.setText("Surat Bebas Covid 1");
+        MnCetakSuratBebasCovid1.setName("MnCetakSuratBebasCovid1"); // NOI18N
+        MnCetakSuratBebasCovid1.setPreferredSize(new java.awt.Dimension(320, 26));
+        MnCetakSuratBebasCovid1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakSuratBebasCovid1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnCetakSuratBebasCovid1);
+
+        MnCetakSuratBebasCovid2.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakSuratBebasCovid2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakSuratBebasCovid2.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakSuratBebasCovid2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakSuratBebasCovid2.setText("Surat Bebas Covid 2");
+        MnCetakSuratBebasCovid2.setName("MnCetakSuratBebasCovid2"); // NOI18N
+        MnCetakSuratBebasCovid2.setPreferredSize(new java.awt.Dimension(320, 26));
+        MnCetakSuratBebasCovid2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakSuratBebasCovid2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnCetakSuratBebasCovid2);
+
+        MnCetakSuratBebasCovidRapid.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakSuratBebasCovidRapid.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakSuratBebasCovidRapid.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakSuratBebasCovidRapid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakSuratBebasCovidRapid.setText("Surat Bebas Covid Rapid");
+        MnCetakSuratBebasCovidRapid.setName("MnCetakSuratBebasCovidRapid"); // NOI18N
+        MnCetakSuratBebasCovidRapid.setPreferredSize(new java.awt.Dimension(320, 26));
+        MnCetakSuratBebasCovidRapid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakSuratBebasCovidRapidActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnCetakSuratBebasCovidRapid);
+
+        MenCetakSuratBebasCovid3.setBackground(new java.awt.Color(255, 255, 254));
+        MenCetakSuratBebasCovid3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MenCetakSuratBebasCovid3.setForeground(new java.awt.Color(50, 50, 50));
+        MenCetakSuratBebasCovid3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MenCetakSuratBebasCovid3.setText("Surat Bebas Covid Swab");
+        MenCetakSuratBebasCovid3.setName("MenCetakSuratBebasCovid3"); // NOI18N
+        MenCetakSuratBebasCovid3.setPreferredSize(new java.awt.Dimension(320, 26));
+        MenCetakSuratBebasCovid3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenCetakSuratBebasCovid3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MenCetakSuratBebasCovid3);
 
         jPopupMenu1.add(jMenu4);
 
@@ -4508,7 +4568,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4521,7 +4581,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4661,7 +4721,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2020" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2020" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -9044,6 +9104,95 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnCetakSuratCutiHamilActionPerformed
 
+    private void MnCetakSuratBebasCovid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratBebasCovid1ActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("norawat",TNoRw.getText());
+//            param.put("bb",Sequel.cariIsi("select berat from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("td",Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("tb",Sequel.cariIsi("select tinggi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptSuratBebasCovid.jasper",param,"::[ Surat Keterangan Bebas Covid-19 ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnCetakSuratBebasCovid1ActionPerformed
+
+    private void MnCetakSuratBebasCovidRapidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratBebasCovidRapidActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("norawat",TNoRw.getText());
+//            param.put("bb",Sequel.cariIsi("select berat from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("td",Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("tb",Sequel.cariIsi("select tinggi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptSuratBebasCovidRapid2.jasper",param,"::[ Surat Keterangan Bebas Covid-19 ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+            
+        }
+    }//GEN-LAST:event_MnCetakSuratBebasCovidRapidActionPerformed
+
+    private void MenCetakSuratBebasCovid3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCetakSuratBebasCovid3ActionPerformed
+          if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("norawat",TNoRw.getText());
+//            param.put("bb",Sequel.cariIsi("select berat from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("td",Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("tb",Sequel.cariIsi("select tinggi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptSuratBebasCovid.jasper",param,"::[ Surat Keterangan Bebas Covid-19 ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MenCetakSuratBebasCovid3ActionPerformed
+
+    private void MnCetakSuratBebasCovid2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratBebasCovid2ActionPerformed
+          if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("norawat",TNoRw.getText());
+//            param.put("bb",Sequel.cariIsi("select berat from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("td",Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("tb",Sequel.cariIsi("select tinggi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptSuratBebasCovid2.jasper",param,"::[ Surat Keterangan Bebas Covid-19 ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnCetakSuratBebasCovid2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9103,6 +9252,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.TextBox Kelurahan2;
     private widget.Label LCount;
     private widget.Label LabelCatatan;
+    private javax.swing.JMenuItem MenCetakSuratBebasCovid3;
     private javax.swing.JMenu MenuInputData;
     private javax.swing.JMenu MenuInputData1;
     private javax.swing.JMenuItem MnBarcode;
@@ -9121,6 +9271,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnCetakRegister;
     private javax.swing.JMenuItem MnCetakRegister1;
     private javax.swing.JMenuItem MnCetakRegister2;
+    private javax.swing.JMenuItem MnCetakSuratBebasCovid1;
+    private javax.swing.JMenuItem MnCetakSuratBebasCovid2;
+    private javax.swing.JMenuItem MnCetakSuratBebasCovidRapid;
     private javax.swing.JMenuItem MnCetakSuratCovid;
     private javax.swing.JMenuItem MnCetakSuratCutiHamil;
     private javax.swing.JMenuItem MnCetakSuratHamil;
