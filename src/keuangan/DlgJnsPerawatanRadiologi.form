@@ -571,7 +571,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel14">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Paket BHP : Rp."/>
+                    <Property name="text" type="java.lang.String" value="JTL : Rp."/>
                     <Property name="name" type="java.lang.String" value="jLabel14" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -684,7 +684,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel15">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="K.S.0.: Rp. "/>
+                    <Property name="text" type="java.lang.String" value="K.S.O.: Rp. "/>
                     <Property name="name" type="java.lang.String" value="jLabel15" noResource="true"/>
                   </Properties>
                   <Constraints>

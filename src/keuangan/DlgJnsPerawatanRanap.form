@@ -881,7 +881,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel16">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="K.S.O. : Rp."/>
+                    <Property name="text" type="java.lang.String" value="J.T.L. : Rp."/>
                     <Property name="name" type="java.lang.String" value="jLabel16" noResource="true"/>
                   </Properties>
                   <Constraints>

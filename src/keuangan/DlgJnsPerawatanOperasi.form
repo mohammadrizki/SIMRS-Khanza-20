@@ -892,7 +892,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel24">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="N.M.S. : Rp"/>
+                            <Property name="text" type="java.lang.String" value="J.T.L. : Rp"/>
                             <Property name="name" type="java.lang.String" value="jLabel24" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -920,7 +920,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel25">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Akomodasi : Rp"/>
+                            <Property name="text" type="java.lang.String" value="Struktural : Rp"/>
                             <Property name="name" type="java.lang.String" value="jLabel25" noResource="true"/>
                           </Properties>
                           <Constraints>
