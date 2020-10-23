@@ -83,6 +83,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
         
+        emptTeks();
+        
         tabModeDr=new DefaultTableModel(null,new Object[]{
             "P","No.Rawat","No.R.M.","Nama Pasien","Perawatan/Tindakan","Kode Dokter","Dokter Yg Menangani","Tgl.Rawat","Jam Rawat","Biaya","Kode","Tarif Dokter","KSO","Jasa Sarana","BHP","Menejemen"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -6731,6 +6733,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             FormMenu.setVisible(false);    
             ChkAccor.setVisible(true);
         }
+    }
+    
+    private void emptTeks(){
+        TabRawat.setEnabledAt(0, false);
+        TabRawat.setEnabledAt(1, false);
     }
     
     
