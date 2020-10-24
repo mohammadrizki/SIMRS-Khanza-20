@@ -4,9 +4,9 @@
  */
 
 /*
- * Dlgsuku_bangsa.java
+ * DlgPekerjaan.java
  *
- * Created on May 23, 2010, 1:25:13 AM
+ * Created on Oct 24, 2020, 7:40:13 PM
  */
 
 package simrskhanza;
@@ -50,7 +50,8 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(459,539);
 
-        tabMode=new DefaultTableModel(null,new Object[]{"ID","Pekerjaan Pasien"}){
+        Object[] row={"Nama Pekerjaan","Kode"};
+        tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -63,15 +64,15 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         for (int i = 0; i < 2; i++) {
             TableColumn column = tbpekerjaan.getColumnModel().getColumn(i);
             if(i==0){
+                column.setPreferredWidth(500);
+            }else if(i==1){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
-            }else if(i==1){
-                column.setPreferredWidth(550);
             }
         }
 
         tbpekerjaan.setDefaultRenderer(Object.class, new WarnaTable());
-        Nama.setDocument(new batasInput((byte)30).getKata(Nama));
+        Nama.setDocument(new batasInput((byte)60).getFilter(Nama));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -94,8 +95,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
                     }
                 }
             });
-        } 
-        
+        }
     }
 
     /** This method is called from within the constructor to
@@ -137,7 +137,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pekerjaan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pekerjaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -164,11 +164,12 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
         panelGlass7.setLayout(null);
 
-        jLabel4.setText("Pekerjaan Pasien :");
+        jLabel4.setText("Nama Pekerjaan :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(0, 12, 120, 23);
+        jLabel4.setBounds(0, 12, 110, 23);
 
+        Nama.setEnabled(false);
         Nama.setName("Nama"); // NOI18N
         Nama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -176,7 +177,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(Nama);
-        Nama.setBounds(125, 12, 520, 23);
+        Nama.setBounds(115, 12, 530, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
@@ -235,6 +236,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('S');
         BtnSimpan.setToolTipText("Alt+S");
+        BtnSimpan.setEnabled(false);
         BtnSimpan.setName("BtnSimpan"); // NOI18N
         BtnSimpan.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -269,6 +271,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnHapus.setMnemonic('H');
         BtnHapus.setToolTipText("Alt+H");
+        BtnHapus.setEnabled(false);
         BtnHapus.setName("BtnHapus"); // NOI18N
         BtnHapus.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -326,7 +329,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         if(Nama.getText().trim().equals("")){
             Valid.textKosong(Nama,"Pekerjaan");
         }else{
-            Sequel.menyimpan("pekerjaan","'0','"+Nama.getText()+"'","Pekerjaan");
+            Sequel.menyimpan("pekerjaan","?,?","Kode Pekerjaan",2,new String[]{"0",Nama.getText()});
             tampil();
             emptTeks();
         }
@@ -351,14 +354,9 @@ public class DlgPekerjaan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Nama.getText().trim().equals("")){
-            Valid.textKosong(Nama,"Pekerjaan");
-        }else{
-            Sequel.meghapus("pekerjaan","kd_pekerjaan",tbpekerjaan.getValueAt(tbpekerjaan.getSelectedRow(),0).toString());  
-            tampil();
-            emptTeks();
-        }
-            
+        Valid.hapusTable(tabMode,Nama,"pekerjaan","nm_pekerjaan");
+        tampil();
+        emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -412,7 +410,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
         }else{
-            Valid.pindah(evt, BtnCari,BtnSimpan);
+            Valid.pindah(evt, BtnCari, BtnSimpan);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -421,7 +419,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
-            }  
+            }
             if(evt.getClickCount()==2){
                 dispose();
             }
@@ -435,6 +433,8 @@ public class DlgPekerjaan extends javax.swing.JDialog {
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }
+            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                dispose();
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCari.setText("");
                 TCari.requestFocus();
@@ -489,7 +489,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select * from pekerjaan where nm_pekerjaan like ? ");
+            ps=koneksi.prepareStatement("select nm_pekerjaan,kd_pekerjaan from pekerjaan where nm_pekerjaan like ? ");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
@@ -497,7 +497,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
                 }
             } catch (Exception e) {
-                System.out.println("Notif : "+e);
+                System.out.println("Notifikasi : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -505,7 +505,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }                
+            }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
@@ -520,20 +520,15 @@ public class DlgPekerjaan extends javax.swing.JDialog {
 
     private void getData() {
         if(tbpekerjaan.getSelectedRow()!= -1){
-            Nama.setText(tbpekerjaan.getValueAt(tbpekerjaan.getSelectedRow(),1).toString());
+            Nama.setText(tbpekerjaan.getValueAt(tbpekerjaan.getSelectedRow(),0).toString());
         }
     }
-    
+
     public JTable getTable() {
         return tbpekerjaan;
     }
-    
+
     public void onCari(){
         TCari.requestFocus();
-    }
-    
-    public void isCek(){
-        BtnSimpan.setEnabled(akses.getsuku_bangsa());
-        BtnHapus.setEnabled(akses.getsuku_bangsa());
     }
 }
