@@ -111,6 +111,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 return types [columnIndex];
              }
         };
+        emptTeks();
         tbRawatDr.setModel(tabModeDr);
         //tampilDr();
 
@@ -7202,6 +7203,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     public void emptTeks(){
         BtnBatalActionPerformed(null);
         TabRawat.setSelectedIndex(3);
+        TabRawat.setEnabledAt(0, false);
+        TabRawat.setEnabledAt(1, false);
+//        TabRawatTindakanDokter.setVisible(false);
+//        TabRawatTindakanPetugas.setVisible(false);
+        
     }
 
 }

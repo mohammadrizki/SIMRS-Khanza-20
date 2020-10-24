@@ -52,7 +52,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
 
         Object[] row={
             "P","Kode Periksa","Nama Pemeriksaan","J.S. RS",
-            "Paket BHP","J.M. Perujuk","J.M. Dokter","J.M. Petugas",
+            "JTL","J.M. Perujuk","J.M. Dokter","J.M. Petugas",
             "K.S.O.","Menejemen","Total Tarif","Jenis Bayar","Kelas"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -201,7 +201,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
 
         ppTemplate.setBackground(new java.awt.Color(255, 255, 254));
         ppTemplate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTemplate.setForeground(new java.awt.Color(50,50,50));
+        ppTemplate.setForeground(new java.awt.Color(50, 50, 50));
         ppTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTemplate.setText("Template Laboratorium");
         ppTemplate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -217,7 +217,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(50,50,50));
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -246,7 +246,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -557,7 +557,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(-10, 162, 135, 23);
 
-        jLabel14.setText("Paket BHP : Rp.");
+        jLabel14.setText("JTL :Rp.");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
         jLabel14.setBounds(-10, 72, 135, 23);

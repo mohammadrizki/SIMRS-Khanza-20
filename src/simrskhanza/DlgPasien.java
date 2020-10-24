@@ -1341,7 +1341,7 @@ public class DlgPasien extends javax.swing.JDialog {
             TabRawat.remove(internalFrame6);
         }
         
-        PanelAccor.setVisible(false);
+        PanelAccor.setVisible(true);
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
