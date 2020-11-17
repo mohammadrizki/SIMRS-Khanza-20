@@ -3192,11 +3192,8 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(5, 90, 95, 23);
 
-<<<<<<< HEAD
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2020" }));
-=======
+
         DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2020" }));
->>>>>>> origin/master
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3317,11 +3314,8 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(775, 30, 130, 23);
 
-<<<<<<< HEAD
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2020" }));
-=======
+
         DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2020" }));
->>>>>>> origin/master
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -8215,7 +8209,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailPjActionPerformed
 
-<<<<<<< HEAD
+
     private void cmbAgama1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbAgama1KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbAgama1KeyPressed
@@ -8227,11 +8221,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         pekerjaanpasien.setLocationRelativeTo(internalFrame1);
         pekerjaanpasien.setVisible(true);
     }//GEN-LAST:event_BtnPekerjaanActionPerformed
-=======
+
     private void NmIbuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NmIbuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NmIbuActionPerformed
->>>>>>> origin/master
+
+
 
     /**
      * @data args the command line arguments
