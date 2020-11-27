@@ -369,6 +369,12 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         Kd2 = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnCetakLab = new javax.swing.JMenu();
+        MnCetakHasilLabKualiKuantiId = new javax.swing.JMenuItem();
+        MnCetakHasilLabKualiKuantiEn = new javax.swing.JMenuItem();
+        MnCetakHasilLabDeskripId = new javax.swing.JMenuItem();
+        MnCetakHasilLabDeskripEn = new javax.swing.JMenuItem();
+        MnCetakSuratBebasCovid1 = new javax.swing.JMenuItem();
+        MnCetakSuratBebasCovid2 = new javax.swing.JMenuItem();
         MnCetakHasilLab = new javax.swing.JMenuItem();
         MnCetakHasilLab1 = new javax.swing.JMenuItem();
         MnCetakHasilLab2 = new javax.swing.JMenuItem();
@@ -381,10 +387,6 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         MnCetakHasilLab9 = new javax.swing.JMenuItem();
         MnCetakHasilLab10 = new javax.swing.JMenuItem();
         MnCetakHasilLab22 = new javax.swing.JMenuItem();
-        MnCetakHasilLabKualiKuantiId = new javax.swing.JMenuItem();
-        MnCetakHasilLabKualiKuantiEn = new javax.swing.JMenuItem();
-        MnCetakHasilLabDeskripId = new javax.swing.JMenuItem();
-        MnCetakHasilLabDeskripEn = new javax.swing.JMenuItem();
         MnPDFLab = new javax.swing.JMenu();
         MnCetakHasilLab11 = new javax.swing.JMenuItem();
         MnCetakHasilLab12 = new javax.swing.JMenuItem();
@@ -462,11 +464,85 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         MnCetakLab.setName("MnCetakLab"); // NOI18N
         MnCetakLab.setPreferredSize(new java.awt.Dimension(190, 26));
 
+        MnCetakHasilLabKualiKuantiId.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakHasilLabKualiKuantiId.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLabKualiKuantiId.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakHasilLabKualiKuantiId.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLabKualiKuantiId.setText("Kuanti & Kuali ID");
+        MnCetakHasilLabKualiKuantiId.setName("MnCetakHasilLabKualiKuantiId"); // NOI18N
+        MnCetakHasilLabKualiKuantiId.setPreferredSize(new java.awt.Dimension(115, 26));
+        MnCetakHasilLabKualiKuantiId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakHasilLabKualiKuantiIdActionPerformed(evt);
+            }
+        });
+        MnCetakLab.add(MnCetakHasilLabKualiKuantiId);
+
+        MnCetakHasilLabKualiKuantiEn.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakHasilLabKualiKuantiEn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLabKualiKuantiEn.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakHasilLabKualiKuantiEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLabKualiKuantiEn.setText("Kuanti & Kuali EN");
+        MnCetakHasilLabKualiKuantiEn.setName("MnCetakHasilLabKualiKuantiEn"); // NOI18N
+        MnCetakHasilLabKualiKuantiEn.setPreferredSize(new java.awt.Dimension(100, 26));
+        MnCetakLab.add(MnCetakHasilLabKualiKuantiEn);
+
+        MnCetakHasilLabDeskripId.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakHasilLabDeskripId.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLabDeskripId.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakHasilLabDeskripId.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLabDeskripId.setText("Deskriptif ID");
+        MnCetakHasilLabDeskripId.setName("MnCetakHasilLabDeskripId"); // NOI18N
+        MnCetakHasilLabDeskripId.setPreferredSize(new java.awt.Dimension(100, 26));
+        MnCetakLab.add(MnCetakHasilLabDeskripId);
+
+        MnCetakHasilLabDeskripEn.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakHasilLabDeskripEn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLabDeskripEn.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakHasilLabDeskripEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLabDeskripEn.setText("Deskriptif EN");
+        MnCetakHasilLabDeskripEn.setName("MnCetakHasilLabDeskripEn"); // NOI18N
+        MnCetakHasilLabDeskripEn.setPreferredSize(new java.awt.Dimension(100, 26));
+        MnCetakHasilLabDeskripEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakHasilLabDeskripEnActionPerformed(evt);
+            }
+        });
+        MnCetakLab.add(MnCetakHasilLabDeskripEn);
+
+        MnCetakSuratBebasCovid1.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakSuratBebasCovid1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakSuratBebasCovid1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakSuratBebasCovid1.setText("Surat Bebas Covid Swab");
+        MnCetakSuratBebasCovid1.setName("MnCetakSuratBebasCovid1"); // NOI18N
+        MnCetakSuratBebasCovid1.setPreferredSize(new java.awt.Dimension(130, 26));
+        MnCetakSuratBebasCovid1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakSuratBebasCovid1ActionPerformed(evt);
+            }
+        });
+        MnCetakLab.add(MnCetakSuratBebasCovid1);
+
+        MnCetakSuratBebasCovid2.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakSuratBebasCovid2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakSuratBebasCovid2.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakSuratBebasCovid2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakSuratBebasCovid2.setText("Surat Bebas Covid Rapid");
+        MnCetakSuratBebasCovid2.setName("MnCetakSuratBebasCovid2"); // NOI18N
+        MnCetakSuratBebasCovid2.setPreferredSize(new java.awt.Dimension(160, 26));
+        MnCetakSuratBebasCovid2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakSuratBebasCovid2ActionPerformed(evt);
+            }
+        });
+        MnCetakLab.add(MnCetakSuratBebasCovid2);
+
         MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab.setText("Model 1");
+        MnCetakHasilLab.setHideActionText(true);
         MnCetakHasilLab.setName("MnCetakHasilLab"); // NOI18N
         MnCetakHasilLab.setPreferredSize(new java.awt.Dimension(100, 26));
         MnCetakHasilLab.addActionListener(new java.awt.event.ActionListener() {
@@ -629,48 +705,6 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             }
         });
         MnCetakLab.add(MnCetakHasilLab22);
-
-        MnCetakHasilLabKualiKuantiId.setBackground(new java.awt.Color(255, 255, 254));
-        MnCetakHasilLabKualiKuantiId.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLabKualiKuantiId.setForeground(new java.awt.Color(50, 50, 50));
-        MnCetakHasilLabKualiKuantiId.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakHasilLabKualiKuantiId.setText("Kuanti & Kuali ID");
-        MnCetakHasilLabKualiKuantiId.setName("MnCetakHasilLabKualiKuantiId"); // NOI18N
-        MnCetakHasilLabKualiKuantiId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCetakHasilLabKualiKuantiIdActionPerformed(evt);
-            }
-        });
-        MnCetakLab.add(MnCetakHasilLabKualiKuantiId);
-
-        MnCetakHasilLabKualiKuantiEn.setBackground(new java.awt.Color(255, 255, 254));
-        MnCetakHasilLabKualiKuantiEn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLabKualiKuantiEn.setForeground(new java.awt.Color(50, 50, 50));
-        MnCetakHasilLabKualiKuantiEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakHasilLabKualiKuantiEn.setText("Kuanti & Kuali EN");
-        MnCetakHasilLabKualiKuantiEn.setName("MnCetakHasilLabKualiKuantiEn"); // NOI18N
-        MnCetakLab.add(MnCetakHasilLabKualiKuantiEn);
-
-        MnCetakHasilLabDeskripId.setBackground(new java.awt.Color(255, 255, 254));
-        MnCetakHasilLabDeskripId.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLabDeskripId.setForeground(new java.awt.Color(50, 50, 50));
-        MnCetakHasilLabDeskripId.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakHasilLabDeskripId.setText("Deskriptif ID");
-        MnCetakHasilLabDeskripId.setName("MnCetakHasilLabDeskripId"); // NOI18N
-        MnCetakLab.add(MnCetakHasilLabDeskripId);
-
-        MnCetakHasilLabDeskripEn.setBackground(new java.awt.Color(255, 255, 254));
-        MnCetakHasilLabDeskripEn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLabDeskripEn.setForeground(new java.awt.Color(50, 50, 50));
-        MnCetakHasilLabDeskripEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakHasilLabDeskripEn.setText("Deskriptif EN");
-        MnCetakHasilLabDeskripEn.setName("MnCetakHasilLabDeskripEn"); // NOI18N
-        MnCetakHasilLabDeskripEn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCetakHasilLabDeskripEnActionPerformed(evt);
-            }
-        });
-        MnCetakLab.add(MnCetakHasilLabDeskripEn);
 
         jPopupMenu1.add(MnCetakLab);
 
@@ -6109,6 +6143,50 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         // TODO add your handling code here:
     }//GEN-LAST:event_MnCetakHasilLabDeskripEnActionPerformed
 
+    private void MnCetakSuratBebasCovid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratBebasCovid1ActionPerformed
+        if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("norawat",Kd2.getText());
+//            param.put("bb",Sequel.cariIsi("select berat from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("td",Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("tb",Sequel.cariIsi("select tinggi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptSuratBebasCovid.jasper",param,"::[ Surat Keterangan Bebas Covid-19 ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnCetakSuratBebasCovid1ActionPerformed
+
+    private void MnCetakSuratBebasCovid2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratBebasCovid2ActionPerformed
+         if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("norawat",Kd2.getText());
+//            param.put("bb",Sequel.cariIsi("select berat from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("td",Sequel.cariIsi("select tensi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+//            param.put("tb",Sequel.cariIsi("select tinggi from pemeriksaan_ralan where no_rawat=?",TNoRw.getText()));
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptSuratBebasCovidRapid2.jasper",param,"::[ Surat Keterangan Bebas Covid-19 ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnCetakSuratBebasCovid2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6166,6 +6244,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private javax.swing.JMenuItem MnCetakHasilLabKualiKuantiId;
     private javax.swing.JMenu MnCetakLab;
     private javax.swing.JMenuItem MnCetakNota;
+    private javax.swing.JMenuItem MnCetakSuratBebasCovid1;
+    private javax.swing.JMenuItem MnCetakSuratBebasCovid2;
     private javax.swing.JMenuItem MnCetakSuratCovid;
     private javax.swing.JMenu MnPDFLab;
     private javax.swing.JMenuItem MnSaranKesan;
