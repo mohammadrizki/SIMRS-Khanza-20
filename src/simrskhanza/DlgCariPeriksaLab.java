@@ -3900,7 +3900,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }else if(!(Kd2.getText().trim().equals(""))){    
             try {        
                 ps4=koneksi.prepareStatement(
-                    "select periksa_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,petugas.nama,DATE_FORMAT(periksa_lab.tgl_periksa,'%d-%m-%Y') as tgl_periksa,periksa_lab.jam,periksa_lab.nip,"+
+                    "select periksa_lab.no_rawat, reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,petugas.nama,DATE_FORMAT(periksa_lab.tgl_periksa,'%d-%m-%Y') as tgl_periksa,periksa_lab.jam,periksa_lab.nip,"+
                     "periksa_lab.dokter_perujuk,periksa_lab.kd_dokter,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,dokter.nm_dokter,DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
                     " from periksa_lab inner join reg_periksa inner join pasien inner join petugas  inner join dokter inner join kelurahan inner join kecamatan inner join kabupaten "+
                     "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.nip=petugas.nip and periksa_lab.kd_dokter=dokter.kd_dokter "+
@@ -3929,7 +3929,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("namapasien",rs.getString("nm_pasien"));//ada
                         param.put("jkel",rs.getString("jk"));//ada
                         param.put("umur",rs.getString("umur"));
-                        param.put("kesan","");
                         param.put("lahir",rs.getString("lahir"));//ada
                         param.put("pengirim",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("dokter_perujuk")));//ada
                         param.put("tanggal",rs.getString("tgl_periksa"));
@@ -3942,7 +3941,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));  
                         param.put("finger2",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
             
-
+                        kesan="";
+                        saran="";
+                        ps5=koneksi.prepareStatement(
+                            "select saran,kesan from saran_kesan_lab where no_rawat=? and tgl_periksa=? and jam=?");  
+                        try {
+                            ps5.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                            ps5.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                            ps5.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                            rs2=ps5.executeQuery();
+                            while(rs2.next()){      
+                                kesan=rs2.getString("kesan");
+                                saran=rs2.getString("saran");
+                            } 
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps5!=null){
+                                ps5.close();
+                            }
+                        }                    
+                        param.put("kesan",kesan);
+                        param.put("saran",saran);
+                        
                         Sequel.queryu("truncate table temporary_lab");
 
                         ps2=koneksi.prepareStatement(
@@ -4012,8 +4036,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 param.put("nopermintaan",rspermintaan.getString("noorder"));   
                                 param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
                                 param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
-                                Valid.MyReport("rptPeriksaLabPermintaan_1.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
-                            }else{
+                                Valid.MyReport("rptPeriksaLabPermintaan1.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{                              
                                 Valid.MyReport("rptPeriksaLabPermintaan_1.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
                             }
                         } catch (Exception e) {
@@ -4131,7 +4155,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("namapasien",rs.getString("nm_pasien"));//ada
                         param.put("jkel",rs.getString("jk"));//ada
                         param.put("umur",rs.getString("umur"));
-                        param.put("kesan","");
                         param.put("lahir",rs.getString("lahir"));//ada
                         param.put("pengirim",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("dokter_perujuk")));//ada
                         param.put("tanggal",rs.getString("tgl_periksa"));
@@ -4144,6 +4167,31 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));  
                         param.put("finger2",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
             
+                        kesan="";
+                        saran="";
+                        ps5=koneksi.prepareStatement(
+                            "select saran,kesan from saran_kesan_lab where no_rawat=? and tgl_periksa=? and jam=?");  
+                        try {
+                            ps5.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                            ps5.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                            ps5.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                            rs2=ps5.executeQuery();
+                            while(rs2.next()){      
+                                kesan=rs2.getString("kesan");
+                                saran=rs2.getString("saran");
+                            } 
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps5!=null){
+                                ps5.close();
+                            }
+                        }                    
+                        param.put("kesan",kesan);
+                        param.put("saran",saran);
 
                         Sequel.queryu("truncate table temporary_lab");
 
@@ -4214,7 +4262,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 param.put("nopermintaan",rspermintaan.getString("noorder"));   
                                 param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
                                 param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
-                                Valid.MyReport("rptHasilLabNumerik_EN.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                                Valid.MyReport("rptHasilLabNumerik_EN1.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
                             }else{
                                 Valid.MyReport("rptHasilLabNumerik_EN.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
                             }
