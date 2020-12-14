@@ -555,23 +555,25 @@
 				<text><![CDATA[Petugas Laboratorium]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="86" y="20" width="60" height="49" uuid="48b22f6c-c59b-4c07-a3c9-5289ba6db837"/>
+				<reportElement x="86" y="20" width="60" height="49" isRemoveLineWhenBlank="true" uuid="48b22f6c-c59b-4c07-a3c9-5289ba6db837"/>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<jr:codeExpression><![CDATA["123456789"]]></jr:codeExpression>
+					<jr:codeExpression><![CDATA[$P{penjab}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<componentElement>
 				<reportElement x="350" y="20" width="69" height="51" uuid="da55ed25-3708-4caa-b5c0-e80df9482247"/>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<jr:codeExpression><![CDATA["123456789"]]></jr:codeExpression>
+					<jr:codeExpression><![CDATA[$P{petugas}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<textField>
-				<reportElement x="42" y="72" width="202" height="21" uuid="c749bfc3-03e6-4b8e-bcbf-95b21634a493"/>
+				<reportElement x="18" y="68" width="202" height="21" uuid="c749bfc3-03e6-4b8e-bcbf-95b21634a493"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{penjab}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="324" y="72" width="147" height="21" uuid="a95d4a41-d060-4e2b-a4e3-a84b40287f93"/>
+				<reportElement x="300" y="72" width="184" height="21" uuid="a95d4a41-d060-4e2b-a4e3-a84b40287f93"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{petugas}]]></textFieldExpression>
 			</textField>
 		</band>
