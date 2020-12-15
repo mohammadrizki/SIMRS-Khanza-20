@@ -31,6 +31,8 @@
 	<parameter name="tanggalpermintaan" class="java.lang.String"/>
 	<parameter name="jampermintaan" class="java.lang.String"/>
 	<parameter name="nosurat" class="java.lang.String"/>
+	<parameter name="stampqrdokter" class="java.lang.Long"/>
+	<parameter name="stampqrpetugas" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[select reg_periksa.no_rawat,dokter.nm_dokter, petugas.nama, pasien.tgl_lahir,pasien.nm_pasien,pasien.pekerjaan,pasien.alamat,pasien.jk
  from reg_periksa inner join pasien inner join dokter inner join petugas INNER JOIN periksa_lab
@@ -556,14 +558,14 @@
 			</staticText>
 			<componentElement>
 				<reportElement x="86" y="20" width="60" height="49" isRemoveLineWhenBlank="true" uuid="48b22f6c-c59b-4c07-a3c9-5289ba6db837"/>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<jr:codeExpression><![CDATA[$P{penjab}]]></jr:codeExpression>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" evaluationTime="Page">
+					<jr:codeExpression><![CDATA[$P{stampqrdokter}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<componentElement>
 				<reportElement x="350" y="20" width="69" height="51" uuid="da55ed25-3708-4caa-b5c0-e80df9482247"/>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<jr:codeExpression><![CDATA[$P{petugas}]]></jr:codeExpression>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" evaluationTime="Page">
+					<jr:codeExpression><![CDATA[$P{stampqrpetugas}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<textField>

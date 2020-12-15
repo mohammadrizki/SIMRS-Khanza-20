@@ -180,7 +180,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         MnCetakSuratSKBN2 = new javax.swing.JMenuItem();
         MnCetakSuratSKBN3 = new javax.swing.JMenuItem();
         MnCetakSuratSKBN4 = new javax.swing.JMenuItem();
-        MnCetakSuratSKBN5 = new javax.swing.JMenuItem();
+        MnSuratCetakSKBN6 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -307,19 +307,19 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakSuratSKBN4);
 
-        MnCetakSuratSKBN5.setBackground(new java.awt.Color(255, 255, 254));
-        MnCetakSuratSKBN5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakSuratSKBN5.setForeground(new java.awt.Color(50, 50, 50));
-        MnCetakSuratSKBN5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakSuratSKBN5.setText("Cetak SKBN 6");
-        MnCetakSuratSKBN5.setName("MnCetakSuratSKBN5"); // NOI18N
-        MnCetakSuratSKBN5.setPreferredSize(new java.awt.Dimension(140, 26));
-        MnCetakSuratSKBN5.addActionListener(new java.awt.event.ActionListener() {
+        MnSuratCetakSKBN6.setBackground(new java.awt.Color(255, 255, 254));
+        MnSuratCetakSKBN6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSuratCetakSKBN6.setForeground(new java.awt.Color(50, 50, 50));
+        MnSuratCetakSKBN6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSuratCetakSKBN6.setText("Cetak SKBN 6");
+        MnSuratCetakSKBN6.setName("MnSuratCetakSKBN6"); // NOI18N
+        MnSuratCetakSKBN6.setPreferredSize(new java.awt.Dimension(140, 26));
+        MnSuratCetakSKBN6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCetakSuratSKBN5ActionPerformed(evt);
+                MnSuratCetakSKBN6ActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCetakSuratSKBN5);
+        jPopupMenu1.add(MnSuratCetakSKBN6);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -499,7 +499,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-12-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -513,7 +513,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-12-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -633,7 +633,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         jLabel18.setBounds(511, 40, 100, 23);
 
         TanggalSurat.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-12-2020" }));
+        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2020" }));
         TanggalSurat.setDisplayFormat("dd-MM-yyyy");
         TanggalSurat.setName("TanggalSurat"); // NOI18N
         TanggalSurat.setOpaque(false);
@@ -1285,14 +1285,25 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             try{
                 ps1=koneksi.prepareStatement(
-                    "select dokter.nm_dokter, petugas.nama "
+                    "select dokter.nm_dokter,dokter.kd_dokter, petugas.nama, petugas.nip "
                      + "from reg_periksa inner join pasien inner join dokter inner join petugas inner join periksa_lab on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                      + "and periksa_lab.kd_dokter=dokter.kd_dokter AND periksa_lab.nip=petugas.nip  where reg_periksa.no_rawat=? and periksa_lab.no_rawat=?");
                 try {
                     ps1.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
                     ps1.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());    
                     rs=ps1.executeQuery();
+                    
                     while(rs.next()){
+                    long tanggalAmbil = (long) new Date().getTime();
+                    long tanggalAmbil2 = (long) new Date().getTime();
+                    String kdDokter = rs.getString("kd_dokter");
+                    String nipPetugas = rs.getString("nip");
+                    String subKdDokter = kdDokter.substring(1);
+                    String subNip = nipPetugas.substring(1);
+                    long intKdDokter = Long.parseLong(subKdDokter);
+                    long intNip = Long.parseLong(subNip);
+                    long penjab = tanggalAmbil+intKdDokter;
+                    long petugas = tanggalAmbil2+intNip;
                     Map<String, Object> param = new HashMap<>();
                     param.put("keperluan",Keperluan.getText());
                     param.put("tanggalsurat",TanggalSurat.getSelectedItem().toString());
@@ -1313,6 +1324,8 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
+                    param.put("stampqrdokter", penjab);
+                    param.put("stampqrpetugas", petugas);
                     param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDok.getText())); 
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
                     Valid.MyReportqry("rptBebasNarkoba5.jasper","report","::[ Surat SKBN 5 ]::",
@@ -1331,57 +1344,71 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnCetakSuratSKBN4ActionPerformed
 
-    private void MnCetakSuratSKBN5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratSKBN5ActionPerformed
+    private void MnSuratCetakSKBN6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSuratCetakSKBN6ActionPerformed
         if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             try{
                 ps1=koneksi.prepareStatement(
-                    "select dokter.nm_dokter, petugas.nama "
+                    "select dokter.nm_dokter,dokter.kd_dokter, petugas.nama, petugas.nip "
                      + "from reg_periksa inner join pasien inner join dokter inner join petugas inner join periksa_lab on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                      + "and periksa_lab.kd_dokter=dokter.kd_dokter AND periksa_lab.nip=petugas.nip  where reg_periksa.no_rawat=? and periksa_lab.no_rawat=?");
                 try {
                     ps1.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
                     ps1.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());    
                     rs=ps1.executeQuery();
+                    
                     while(rs.next()){
+                    long tanggalAmbil = (long) new Date().getTime();
+                    long tanggalAmbil2 = (long) new Date().getTime();
+                    String kdDokter = rs.getString("kd_dokter");
+                    String nipPetugas = rs.getString("nip");
+                    String subKdDokter = kdDokter.substring(1);
+                    String subNip = nipPetugas.substring(1);
+                    long intKdDokter = Long.parseLong(subKdDokter);
+                    long intNip = Long.parseLong(subNip);
+                    long penjab = tanggalAmbil+intKdDokter;
+                    long petugas = tanggalAmbil2+intNip;
                     Map<String, Object> param = new HashMap<>();
-                param.put("keperluan",Keperluan.getText());
-                param.put("tanggalsurat",TanggalSurat.getSelectedItem().toString());
-                param.put("kategori",Kategori.getSelectedItem().toString());
-                param.put("nosurat",NoSurat.getText());
-                param.put("dokter",TDokter.getText());
-                param.put("opiat",hasil1.getSelectedItem().toString());
-                param.put("ganja",hasil2.getSelectedItem().toString());
-                param.put("amphetamin",hasil3.getSelectedItem().toString());
-                param.put("methamphetamin",hasil4.getSelectedItem().toString());
-                param.put("benzodiazepin",hasil5.getSelectedItem().toString());
-                param.put("cocain",hasil6.getSelectedItem().toString());
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());
-                param.put("penjab",rs.getString("nm_dokter"));
-                param.put("petugas",rs.getString("nama"));
-                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDok.getText())); 
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReportqry("rptBebasNarkoba6.jasper","report","::[ Surat SKBN 5 ]::",
-                              " select reg_periksa.no_rawat,dokter.nm_dokter, petugas.nama,pasien.tgl_lahir,pasien.nm_pasien,pasien.pekerjaan,pasien.alamat,pasien.jk "
-                                      + "from reg_periksa inner join pasien inner join dokter inner join petugas inner join periksa_lab on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                      + "and periksa_lab.kd_dokter=dokter.kd_dokter AND periksa_lab.nip=petugas.nip  where reg_periksa.no_rawat='"+TNoRw.getText()+"' and periksa_lab.no_rawat='"+TNoRw.getText()+"'",param);
-                this.setCursor(Cursor.getDefaultCursor()); 
+                    param.put("keperluan",Keperluan.getText());
+                    param.put("tanggalsurat",TanggalSurat.getSelectedItem().toString());
+                    param.put("kategori",Kategori.getSelectedItem().toString());
+                    param.put("nosurat",NoSurat.getText());
+                    param.put("dokter",TDokter.getText());
+                    param.put("opiat",hasil1.getSelectedItem().toString());
+                    param.put("ganja",hasil2.getSelectedItem().toString());
+                    param.put("amphetamin",hasil3.getSelectedItem().toString());
+                    param.put("methamphetamin",hasil4.getSelectedItem().toString());
+                    param.put("benzodiazepin",hasil5.getSelectedItem().toString());
+                    param.put("cocain",hasil6.getSelectedItem().toString());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("penjab",rs.getString("nm_dokter"));
+                    param.put("petugas",rs.getString("nama"));
+                    param.put("stampqrdokter", penjab);
+                    param.put("stampqrpetugas", petugas);
+                    param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDok.getText())); 
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    Valid.MyReportqry("rptBebasNarkoba6.jasper","report","::[ Surat SKBN 6 ]::",
+                                  " select reg_periksa.no_rawat,dokter.nm_dokter, petugas.nama,pasien.tgl_lahir,pasien.nm_pasien,pasien.pekerjaan,pasien.alamat,pasien.jk "
+                                          + "from reg_periksa inner join pasien inner join dokter inner join petugas inner join periksa_lab on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                          + "and periksa_lab.kd_dokter=dokter.kd_dokter AND periksa_lab.nip=petugas.nip  where reg_periksa.no_rawat='"+TNoRw.getText()+"' and periksa_lab.no_rawat='"+TNoRw.getText()+"'",param);
+                    this.setCursor(Cursor.getDefaultCursor()); 
                     }
                 }catch(Exception e){
-                }
-            
+                    System.out.println("Notif : "+e);
+                }            
             }catch(Exception e){
+                System.out.println("Notif : "+e);
             }
                 
         }
-    }//GEN-LAST:event_MnCetakSuratSKBN5ActionPerformed
+    }//GEN-LAST:event_MnSuratCetakSKBN6ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1421,7 +1448,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnCetakSuratSKBN2;
     private javax.swing.JMenuItem MnCetakSuratSKBN3;
     private javax.swing.JMenuItem MnCetakSuratSKBN4;
-    private javax.swing.JMenuItem MnCetakSuratSKBN5;
+    private javax.swing.JMenuItem MnSuratCetakSKBN6;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
