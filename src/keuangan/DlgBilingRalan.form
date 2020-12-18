@@ -26,6 +26,7 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Input Tindakan Ralan"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnInputTindakan" noResource="true"/>
@@ -52,6 +53,7 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Input Obat/Barang/Alkes"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnInputObat" noResource="true"/>
@@ -78,6 +80,7 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Input Periksa Lab"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnPeriksaLab" noResource="true"/>
@@ -104,6 +107,7 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Input Periksa Radiologi"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnPeriksaRadiologi" noResource="true"/>
@@ -1586,7 +1590,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="26-07-2020 13:14:40"/>
+                    <StringItem index="0" value="17-12-2020 10:27:53"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
