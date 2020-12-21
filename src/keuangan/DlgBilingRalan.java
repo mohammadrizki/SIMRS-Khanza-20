@@ -787,6 +787,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         MnInputTindakan.setForeground(new java.awt.Color(50, 50, 50));
         MnInputTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnInputTindakan.setText("Input Tindakan Ralan");
+        MnInputTindakan.setEnabled(false);
         MnInputTindakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnInputTindakan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnInputTindakan.setName("MnInputTindakan"); // NOI18N
@@ -803,6 +804,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         MnInputObat.setForeground(new java.awt.Color(50, 50, 50));
         MnInputObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnInputObat.setText("Input Obat/Barang/Alkes");
+        MnInputObat.setEnabled(false);
         MnInputObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnInputObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnInputObat.setName("MnInputObat"); // NOI18N
@@ -819,6 +821,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         MnPeriksaLab.setForeground(new java.awt.Color(50, 50, 50));
         MnPeriksaLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPeriksaLab.setText("Input Periksa Lab");
+        MnPeriksaLab.setEnabled(false);
         MnPeriksaLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPeriksaLab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPeriksaLab.setName("MnPeriksaLab"); // NOI18N
@@ -835,6 +838,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         MnPeriksaRadiologi.setForeground(new java.awt.Color(50, 50, 50));
         MnPeriksaRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPeriksaRadiologi.setText("Input Periksa Radiologi");
+        MnPeriksaRadiologi.setEnabled(false);
         MnPeriksaRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPeriksaRadiologi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPeriksaRadiologi.setName("MnPeriksaRadiologi"); // NOI18N
@@ -1662,7 +1666,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2020 19:31:14" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020 13:14:40" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);

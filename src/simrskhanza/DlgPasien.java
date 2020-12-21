@@ -83,7 +83,8 @@ public class DlgPasien extends javax.swing.JDialog {
     public  DlgSatuanPolri satuanpolri=new DlgSatuanPolri(null,false);
     public  DlgPangkatPolri pangkatpolri=new DlgPangkatPolri(null,false);
     public  DlgJabatanPolri jabatanpolri=new DlgJabatanPolri(null,false);
-    public  DlgPekerjaan pekerjaanpasien=new DlgPekerjaan(null,false); 
+    public  DlgPekerjaan pekerjaanpasien=new DlgPekerjaan(null,false);
+    public  DlgPekerjaan pekerjaanpasienPj=new DlgPekerjaan(null,false); 
     
     private int pilih=0,z=0,j=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
             p_pekerjaan=0,p_no_tlp=0,p_umur=0,p_namakeluarga=0,p_no_peserta=0,
@@ -1036,6 +1037,8 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         
+        
+        
         pekerjaanpasien.getTable().addKeyListener(new KeyListener(){
             @Override
             public void keyTyped(KeyEvent e) {
@@ -1251,6 +1254,48 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
+         
+        pekerjaanpasienPj.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgPasien")){
+                    if(pekerjaanpasienPj.getTable().getSelectedRow()!= -1){
+                        PekerjaanPj.setText(pekerjaanpasienPj.getTable().getValueAt(pekerjaanpasienPj.getTable().getSelectedRow(),1).toString());
+                    }  
+                    PekerjaanPj.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pekerjaanpasienPj.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgPasien")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pekerjaanpasienPj.dispose();
+                    }                
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        
+        
         try {
             pssetalamat=koneksi.prepareStatement("select * from set_alamat_pasien");
             try {
@@ -1393,8 +1438,8 @@ public class DlgPasien extends javax.swing.JDialog {
         
         PanelAccor.setVisible(true);
         HTMLEditorKit kit = new HTMLEditorKit();
-        LoadHTML.setEditable(true);
-        LoadHTML.setEditorKit(kit);
+//        LoadHTML.setEditable(true);
+//        LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -1409,7 +1454,7 @@ public class DlgPasien extends javax.swing.JDialog {
         );
         
         Document doc = kit.createDefaultDocument();
-        LoadHTML.setDocument(doc);
+//        LoadHTML.setDocument(doc);
     }
     
 
@@ -1676,6 +1721,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel46 = new widget.Label();
         CmbAgama = new widget.ComboBox();
         BtnPekerjaan = new widget.Button();
+        btnPekerjaanPj = new widget.Button();
         internalFrame4 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbPasien = new widget.Table();
@@ -1697,7 +1743,6 @@ public class DlgPasien extends javax.swing.JDialog {
         btnAmbilPhoto = new widget.Button();
         BtnRefreshPhoto = new widget.Button();
         Scroll4 = new widget.ScrollPane();
-        LoadHTML = new widget.editorpane();
         FormPass = new widget.PanelBiasa();
         FormPass1 = new widget.PanelBiasa();
         btnUbahPassword = new widget.Button();
@@ -3192,7 +3237,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(5, 90, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-11-2020" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-12-2020" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3313,7 +3358,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(775, 30, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-11-2020" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-12-2020" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -4228,7 +4273,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(PekerjaanPj);
-        PekerjaanPj.setBounds(102, 390, 290, 23);
+        PekerjaanPj.setBounds(102, 390, 200, 23);
 
         NoTelpPj.setName("NoTelpPj"); // NOI18N
         NoTelpPj.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -4271,6 +4316,16 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         FormInput.add(BtnPekerjaan);
         BtnPekerjaan.setBounds(390, 150, 28, 23);
+
+        btnPekerjaanPj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPekerjaanPj.setName("btnPekerjaanPj"); // NOI18N
+        btnPekerjaanPj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPekerjaanPjActionPerformed(evt);
+            }
+        });
+        FormInput.add(btnPekerjaanPj);
+        btnPekerjaanPj.setBounds(300, 390, 28, 23);
 
         Scroll1.setViewportView(FormInput);
 
@@ -4480,11 +4535,6 @@ public class DlgPasien extends javax.swing.JDialog {
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
         Scroll4.setPreferredSize(new java.awt.Dimension(200, 200));
-
-        LoadHTML.setBorder(null);
-        LoadHTML.setName("LoadHTML"); // NOI18N
-        Scroll4.setViewportView(LoadHTML);
-
         FormPhoto.add(Scroll4, java.awt.BorderLayout.CENTER);
 
         FormPhotoPass.add(FormPhoto);
@@ -8224,6 +8274,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
     }//GEN-LAST:event_NmIbuActionPerformed
 
+    private void btnPekerjaanPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPekerjaanPjActionPerformed
+        akses.setform("DlgPasien");
+        pekerjaanpasienPj.isCek();
+        pekerjaanpasienPj.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+        pekerjaanpasienPj.setLocationRelativeTo(internalFrame1);
+        pekerjaanpasienPj.setVisible(true);
+    }//GEN-LAST:event_btnPekerjaanPjActionPerformed
+
 
 
     /**
@@ -8353,7 +8411,6 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.Label LabelPangkatTNI;
     private widget.Label LabelSatuanPolri;
     private widget.Label LabelSatuanTNI;
-    private widget.editorpane LoadHTML;
     private javax.swing.JMenu MenuBPJS;
     private javax.swing.JMenu MenuIdentitas;
     private javax.swing.JMenuItem MnBarcodeRM;
@@ -8443,6 +8500,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private javax.swing.JTabbedPane TabRawat;
     private javax.swing.JDialog WindowGabungRM;
     private widget.Button btnAmbilPhoto;
+    private widget.Button btnPekerjaanPj;
     private widget.Button btnPropinsiPj;
     private widget.Button btnUbahPassword;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -9934,13 +9992,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     rs=ps.executeQuery();
                     if(rs.next()){
                         if(rs.getString("gambar").equals("")||rs.getString("gambar").equals("-")){
-                            LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+//                            LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/photopasien/"+rs.getString("gambar")+"' alt='photo' width='200' height='200'/></center></body></html>");
+//                            LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/photopasien/"+rs.getString("gambar")+"' alt='photo' width='200' height='200'/></center></body></html>");
                         }  
                         PasswordPasien.setText(rs.getString("password"));
                     }else{
-                        LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+//                        LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         PasswordPasien.setText("");
                     }
                 } catch (Exception e) {
