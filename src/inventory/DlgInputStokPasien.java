@@ -30,6 +30,8 @@ import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -56,7 +58,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private double ttl=0,y=0,ttlhpp=0,ttljual=0,ppnobat=0,stokobat,kenaikan=0;
     private int jml=0,i=0,index=0;
     private String Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="",
-                   tampilkan_ppnobat_ranap="",aktifkanbatch="no",nopermintaan="";
+                   tampilkan_ppnobat_ranap="",aktifkanbatch="no",nopermintaan="",pilihanetiket="",hppfarmasi="";
     private String[] keranap,kodebarang,namabarang,kategori,satuan,nobatch,nofaktur,aturanpakai;
     private Double[] kapasitas,stok,harga,hargabeli,subtotal;
     private boolean sukses=false;
@@ -235,6 +237,12 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println(e);
+        }
+        
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
         }
     }
     
@@ -767,6 +775,149 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                         if(sukses==true){
                             Sequel.Commit();
+                            
+                            Map<String, Object> param = new HashMap<>();  
+                            param.put("namars",akses.getnamars());
+                            param.put("alamatrs",akses.getalamatrs());
+                            param.put("kotars",akses.getkabupatenrs());
+                            param.put("propinsirs",akses.getpropinsirs());
+                            param.put("kontakrs",akses.getkontakrs());
+                            param.put("emailrs",akses.getemailrs());   
+                            pilihanetiket = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cetak aturan pakai..!!","Cetak Aturan Pakai",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Cetak Aturan Pakai Model 1","Cetak Aturan Pakai Model 2","Cetak Aturan Pakai Model 3","Cetak Label Obat","Cetak Aturan Pakai Model 1 & Cetak Label Obat","Cetak Aturan Pakai Model 2 & Cetak Label Obat","Cetak Aturan Pakai Model 3 & Cetak Label Obat"},"Cetak Aturan Pakai Model 1");
+                            switch (pilihanetiket) {
+                                case "Cetak Aturan Pakai Model 1": 
+                                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                    }              
+                                    this.setCursor(Cursor.getDefaultCursor());
+                                    break;
+                                case "Cetak Aturan Pakai Model 2": 
+                                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                    }
+                                    break;
+                                case "Cetak Aturan Pakai Model 3": 
+                                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                    }           
+                                    this.setCursor(Cursor.getDefaultCursor());
+                                    break;
+                                 case "Cetak Label Obat": 
+                                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                    }           
+                                    this.setCursor(Cursor.getDefaultCursor());
+                                    break;
+                                 case "Cetak Aturan Pakai Model 1 & Cetak Label Obat": 
+                                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                    }              
+                                    this.setCursor(Cursor.getDefaultCursor());
+                                    break;
+                                case "Cetak Aturan Pakai Model 2 & Cetak Label Obat": 
+                                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                    }
+                                    break;
+                                case "Cetak Aturan Pakai Model 3 & Cetak Label Obat": 
+                                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                    }           
+                                    this.setCursor(Cursor.getDefaultCursor());
+                                    break;
+                                default:
+                                    break;
+                            }
                         }else{
                             sukses=false;
                             JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -1100,7 +1251,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 if(aktifkanbatch.equals("yes")){
                     pstampil=koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
-                            " data_batch.dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur  "+
+                            " data_batch."+hppfarmasi+" as dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur  "+
                             " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
                             " inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
@@ -1143,7 +1294,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }else{
                     pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
-                            " databarang.dasar,gudangbarang.stok  "+
+                            " databarang."+hppfarmasi+" as dasar,gudangbarang.stok  "+
                             " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng where"+
                             " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
@@ -1187,7 +1338,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pstampil=koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"+
                             " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.karyawan,"+
-                            " data_batch.dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur  "+
+                            " data_batch."+hppfarmasi+" as dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur  "+
                             " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
                             " inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
@@ -1302,7 +1453,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,databarang.kelas1,"+
                             " databarang.kelas2,databarang.kelas3,databarang.utama,databarang.vip,"+
-                            " databarang.vvip,databarang.beliluar,databarang.karyawan,databarang.dasar,gudangbarang.stok  "+
+                            " databarang.vvip,databarang.beliluar,databarang.karyawan,databarang."+hppfarmasi+" as dasar,gudangbarang.stok  "+
                             " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng where"+
                             " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
@@ -1420,7 +1571,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 if(aktifkanbatch.equals("yes")){
                     pstampil=koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
-                            " data_batch.dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur,"+
+                            " data_batch."+hppfarmasi+" as dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur,"+
                             " detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
                             " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa "+
                             " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
@@ -1475,7 +1626,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }else{
                     pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
-                            " databarang.dasar,gudangbarang.stok,detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
+                            " databarang."+hppfarmasi+" as dasar,gudangbarang.stok,detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
                             " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa "+
                             " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join detail_permintaan_stok_obat_pasien on detail_permintaan_stok_obat_pasien.kode_brng=databarang.kode_brng "+
@@ -1530,7 +1681,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pstampil=koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"+
                             " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.karyawan,"+
-                            " data_batch.dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur,"+
+                            " data_batch."+hppfarmasi+" as dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur,"+
                             " detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
                             " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa "+
                             " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
@@ -1672,7 +1823,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,databarang.kelas1,"+
                             " databarang.kelas2,databarang.kelas3,databarang.utama,databarang.vip,"+
-                            " databarang.vvip,databarang.beliluar,databarang.karyawan,databarang.dasar,gudangbarang.stok,"+
+                            " databarang.vvip,databarang.beliluar,databarang.karyawan,databarang."+hppfarmasi+" as dasar,gudangbarang.stok,"+
                             " detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
                             " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa "+
                             " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+

@@ -145,7 +145,10 @@ public final class akses {
             pcare_cek_kartu=false,surat_bebas_narkoba=false,surat_keterangan_covid=false,pemakaian_air_tanah=false,grafik_air_tanah_pertanggal=false,
             grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false,grafik_harian_hemodialisa=false,grafik_bulanan_hemodialisa=false,
             grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false,perbaikan_inventaris=false,surat_cuti_hamil=false,
-            permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false;
+            permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
+            harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false,
+            skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false,demografi_umur_kunjungan=false,jam_diet_pasien=false,
+            rvu_bpjs=false,verifikasi_penerimaan_farmasi=false,verifikasi_penerimaan_logistik=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -832,6 +835,20 @@ public final class akses {
                         akses.surat_cuti_hamil=true;
                         akses.permintaan_stok_obat_pasien=true;
                         akses.pemeliharaan_inventaris=true;
+                        akses.klasifikasi_pasien_ranap=true;
+                        akses.bulanan_klasifikasi_pasien_ranap=true;
+                        akses.harian_klasifikasi_pasien_ranap=true;
+                        akses.klasifikasi_pasien_perbangsal=true;
+                        akses.soap_perawatan=true;
+                        akses.klaim_rawat_jalan=true;
+                        akses.skrining_gizi=true;
+                        akses.lama_penyiapan_rm=true;
+                        akses.dosis_radiologi=true;
+                        akses.demografi_umur_kunjungan=true;
+                        akses.jam_diet_pasien=true;
+                        akses.rvu_bpjs=true;
+                        akses.verifikasi_penerimaan_farmasi=true;
+                        akses.verifikasi_penerimaan_logistik=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1502,6 +1519,20 @@ public final class akses {
                         akses.surat_cuti_hamil=rs2.getBoolean("surat_cuti_hamil");
                         akses.permintaan_stok_obat_pasien=rs2.getBoolean("permintaan_stok_obat_pasien");
                         akses.pemeliharaan_inventaris=rs2.getBoolean("pemeliharaan_inventaris");
+                        akses.klasifikasi_pasien_ranap=rs2.getBoolean("klasifikasi_pasien_ranap");
+                        akses.bulanan_klasifikasi_pasien_ranap=rs2.getBoolean("bulanan_klasifikasi_pasien_ranap");
+                        akses.harian_klasifikasi_pasien_ranap=rs2.getBoolean("harian_klasifikasi_pasien_ranap");
+                        akses.klasifikasi_pasien_perbangsal=rs2.getBoolean("klasifikasi_pasien_perbangsal");
+                        akses.soap_perawatan=rs2.getBoolean("soap_perawatan");
+                        akses.klaim_rawat_jalan=rs2.getBoolean("klaim_rawat_jalan");
+                        akses.skrining_gizi=rs2.getBoolean("skrining_gizi");
+                        akses.lama_penyiapan_rm=rs2.getBoolean("lama_penyiapan_rm");
+                        akses.dosis_radiologi=rs2.getBoolean("dosis_radiologi");
+                        akses.demografi_umur_kunjungan=rs2.getBoolean("demografi_umur_kunjungan");
+                        akses.jam_diet_pasien=rs2.getBoolean("jam_diet_pasien");
+                        akses.rvu_bpjs=rs2.getBoolean("rvu_bpjs");
+                        akses.verifikasi_penerimaan_farmasi=rs2.getBoolean("verifikasi_penerimaan_farmasi");
+                        akses.verifikasi_penerimaan_logistik=rs2.getBoolean("verifikasi_penerimaan_logistik");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2170,6 +2201,20 @@ public final class akses {
                         akses.surat_cuti_hamil=false;
                         akses.permintaan_stok_obat_pasien=false;
                         akses.pemeliharaan_inventaris=false;
+                        akses.klasifikasi_pasien_ranap=false;
+                        akses.bulanan_klasifikasi_pasien_ranap=false;
+                        akses.harian_klasifikasi_pasien_ranap=false;
+                        akses.klasifikasi_pasien_perbangsal=false;
+                        akses.soap_perawatan=false;
+                        akses.klaim_rawat_jalan=false;
+                        akses.skrining_gizi=false;
+                        akses.lama_penyiapan_rm=false;
+                        akses.dosis_radiologi=false;
+                        akses.demografi_umur_kunjungan=false;
+                        akses.jam_diet_pasien=false;
+                        akses.rvu_bpjs=false;
+                        akses.verifikasi_penerimaan_farmasi=false;
+                        akses.verifikasi_penerimaan_logistik=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2892,4 +2937,18 @@ public final class akses {
     public static boolean getsurat_cuti_hamil(){return akses.surat_cuti_hamil;}
     public static boolean getpermintaan_stok_obat_pasien(){return akses.permintaan_stok_obat_pasien;}
     public static boolean getpemeliharaan_inventaris(){return akses.pemeliharaan_inventaris;}
+    public static boolean getklasifikasi_pasien_ranap(){return akses.klasifikasi_pasien_ranap;}
+    public static boolean getbulanan_klasifikasi_pasien_ranap(){return akses.bulanan_klasifikasi_pasien_ranap;}
+    public static boolean getharian_klasifikasi_pasien_ranap(){return akses.harian_klasifikasi_pasien_ranap;}
+    public static boolean getklasifikasi_pasien_perbangsal(){return akses.klasifikasi_pasien_perbangsal;}
+    public static boolean getsoap_perawatan(){return akses.soap_perawatan;}
+    public static boolean getklaim_rawat_jalan(){return akses.klaim_rawat_jalan;}
+    public static boolean getskrining_gizi(){return akses.skrining_gizi;}
+    public static boolean getlama_penyiapan_rm(){return akses.lama_penyiapan_rm;}
+    public static boolean getdosis_radiologi(){return akses.dosis_radiologi;}
+    public static boolean getdemografi_umur_kunjungan(){return akses.demografi_umur_kunjungan;}
+    public static boolean getjam_diet_pasien(){return akses.jam_diet_pasien;}
+    public static boolean getrvu_bpjs(){return akses.rvu_bpjs;}
+    public static boolean getverifikasi_penerimaan_farmasi(){return akses.verifikasi_penerimaan_farmasi;}
+    public static boolean getverifikasi_penerimaan_logistik(){return akses.verifikasi_penerimaan_logistik;}
 }   

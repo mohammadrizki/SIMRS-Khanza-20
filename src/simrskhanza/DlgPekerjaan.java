@@ -5,7 +5,7 @@
 
 /*
  * DlgPekerjaan.java
- *
+ * Author: dr. Mohammad Rizki, Sp.PK & Imam Afriyadi
  * Created on Oct 24, 2020, 7:40:13 PM
  */
 
@@ -16,6 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -49,8 +50,8 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(459,539);
 
-        Object[] row={"Nama Pekerjaan","Kode"};
-        tabMode=new DefaultTableModel(null,row){
+
+        tabMode=new DefaultTableModel(null,new Object[]{"ID","Pekerjaan Pasien"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -63,7 +64,10 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         for (int i = 0; i < 2; i++) {
             TableColumn column = tbpekerjaan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(500);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==1){
+                column.setPreferredWidth(550);
             }else if(i==1){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -71,7 +75,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         }
 
         tbpekerjaan.setDefaultRenderer(Object.class, new WarnaTable());
-        Nama.setDocument(new batasInput((byte)60).getFilter(Nama));
+        Nama.setDocument(new batasInput((byte)30).getKata(Nama));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -328,7 +332,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
         if(Nama.getText().trim().equals("")){
             Valid.textKosong(Nama,"Pekerjaan");
         }else{
-            Sequel.menyimpan("pekerjaan","?,?","Kode Pekerjaan",2,new String[]{"0",Nama.getText()});
+            Sequel.menyimpan("pekerjaan","'0','"+Nama.getText()+"'","Pekerjaan");
             tampil();
             emptTeks();
         }
@@ -353,6 +357,14 @@ public class DlgPekerjaan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
+        if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Pekerjaan");
+        }else{
+            Sequel.meghapus("pekerjaan","kd_pekerjaan",tbpekerjaan.getValueAt(tbpekerjaan.getSelectedRow(),0).toString());  
+            tampil();
+            emptTeks();
+        }
+            
         Valid.hapusTable(tabMode,Nama,"pekerjaan","nm_pekerjaan");
         tampil();
         emptTeks();
@@ -418,6 +430,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
+
             }
             if(evt.getClickCount()==2){
                 dispose();
@@ -488,7 +501,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select nm_pekerjaan,kd_pekerjaan from pekerjaan where nm_pekerjaan like ? ");
+            ps=koneksi.prepareStatement("select * from pekerjaan where nm_pekerjaan like ? ");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
@@ -497,6 +510,7 @@ public class DlgPekerjaan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
+
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -519,15 +533,20 @@ public class DlgPekerjaan extends javax.swing.JDialog {
 
     private void getData() {
         if(tbpekerjaan.getSelectedRow()!= -1){
-            Nama.setText(tbpekerjaan.getValueAt(tbpekerjaan.getSelectedRow(),0).toString());
+            Nama.setText(tbpekerjaan.getValueAt(tbpekerjaan.getSelectedRow(),1).toString());
         }
     }
-
+    
     public JTable getTable() {
         return tbpekerjaan;
     }
-
+    
     public void onCari(){
         TCari.requestFocus();
+    }
+    
+    public void isCek(){
+        BtnSimpan.setEnabled(akses.getsuku_bangsa());
+        BtnHapus.setEnabled(akses.getsuku_bangsa());
     }
 }

@@ -256,6 +256,9 @@ public final class DlgResepObat extends javax.swing.JDialog {
         } catch (Exception ex) {
             lembarobat="";
         }
+        
+        Valid.SetTgl2(DTPCari1,format.format(new Date())+" 00:00:00");
+        Valid.SetTgl2(DTPCari2,format.format(new Date())+" 23:59:59"); 
     }
 
     /** This method is called from within the constructor to
@@ -1305,7 +1308,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
-                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan "+
+                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from resep_obat inner join reg_periksa inner join pasien inner join "+
                     "aturan_pakai inner join databarang inner join detail_pemberian_obat "+
                     "inner join kodesatuan on resep_obat.no_rawat=reg_periksa.no_rawat  "+
@@ -1328,7 +1331,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep2.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
-                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
+                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur " +
                     "from resep_obat inner join reg_periksa inner join pasien inner join " +
                     "obat_racikan inner join metode_racik on resep_obat.no_rawat=reg_periksa.no_rawat " +
                     "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -1518,7 +1521,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep3.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
-                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,jenis.nama as jenis "+
+                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,jenis.nama as jenis,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from resep_obat inner join reg_periksa inner join pasien inner join "+
                     "aturan_pakai inner join databarang inner join detail_pemberian_obat "+
                     "inner join kodesatuan inner join jenis on resep_obat.no_rawat=reg_periksa.no_rawat  "+
@@ -1541,7 +1544,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep2.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
-                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
+                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur " +
                     "from resep_obat inner join reg_periksa inner join pasien inner join " +
                     "obat_racikan inner join metode_racik on resep_obat.no_rawat=reg_periksa.no_rawat " +
                     "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -1579,7 +1582,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep5.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
-                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan "+
+                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from resep_obat inner join reg_periksa inner join pasien inner join "+
                     "aturan_pakai inner join databarang inner join detail_pemberian_obat "+
                     "inner join kodesatuan on resep_obat.no_rawat=reg_periksa.no_rawat  "+
@@ -1602,7 +1605,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep6.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
-                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
+                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur " +
                     "from resep_obat inner join reg_periksa inner join pasien inner join " +
                     "obat_racikan inner join metode_racik on resep_obat.no_rawat=reg_periksa.no_rawat " +
                     "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
