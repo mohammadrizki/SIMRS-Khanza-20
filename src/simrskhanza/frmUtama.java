@@ -554,7 +554,7 @@ import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPenagihanPiutangPasien;
-import keuangan.KeuanganRVCBPJS;
+import keuangan.KeuanganRVPBPJS;
 import keuangan.KeuanganSetTarifOnline;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -10471,7 +10471,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPiutangBelumLunas rbpaketbhp=new DlgPiutangBelumLunas(this,false);
-        rbpaketbhp.tampil();
         rbpaketbhp.isCek();
         rbpaketbhp.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         rbpaketbhp.setLocationRelativeTo(PanelUtama);
@@ -16541,12 +16540,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-
-    private void btnRVCPiutangBPJSActionPerformed(java.awt.event.ActionEvent evt) {
+    
+    private void btnRVPPiutangBPJSActionPerformed(java.awt.event.ActionEvent evt) { 
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeuanganRVCBPJS rbpaketbhp=new KeuanganRVCBPJS(this,false);
-        rbpaketbhp.tampil();
+        KeuanganRVPBPJS rbpaketbhp=new KeuanganRVPBPJS(this,false);
         rbpaketbhp.isCek();
         rbpaketbhp.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         rbpaketbhp.setLocationRelativeTo(PanelUtama);
@@ -17186,7 +17184,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
-            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien,btnRVCPiutangBPJS,
+            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien,btnRVPPiutangBPJS,
             btnVerifikasiPenerimaanFarmasi,btnVerifikasiPenerimaanLogistik;
 
     public void isWall(){
@@ -18880,7 +18878,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
 
             if(akses.getrvu_bpjs()==true){
-               Panelmenu.add(btnRVCPiutangBPJS);
+               Panelmenu.add(btnRVPPiutangBPJS); 
                jmlmenu++;
             }
 
@@ -22275,7 +22273,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }
 
         if(akses.getrvu_bpjs()==true){
-           Panelmenu.add(btnRVCPiutangBPJS);
+           Panelmenu.add(btnRVPPiutangBPJS); 
            jmlmenu++;
         }
 
@@ -26286,10 +26284,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }
 
         if(akses.getrvu_bpjs()==true){
-            if(btnRVCPiutangBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-               Panelmenu.add(btnRVCPiutangBPJS);
-               jmlmenu++;
-            }
+            if(btnRVPPiutangBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+               Panelmenu.add(btnRVPPiutangBPJS); 
+               jmlmenu++; 
+            }               
         }
 
         if(akses.getklaim_rawat_jalan()==true){
@@ -30553,15 +30551,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJamDietPasien.setName("btnJamDietPasien");
         btnJamDietPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnJamDietPasien.addActionListener(this::btnJamDietPasienActionPerformed);
-
-        btnRVCPiutangBPJS = new widget.ButtonBig();
-        btnRVCPiutangBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_pay_sale_shop_4177573.png")));
-        btnRVCPiutangBPJS.setText("RVC Piutang BPJS");
-        btnRVCPiutangBPJS.setIconTextGap(0);
-        btnRVCPiutangBPJS.setName("btnRVCPiutangBPJS");
-        btnRVCPiutangBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRVCPiutangBPJS.addActionListener(this::btnRVCPiutangBPJSActionPerformed);
-
+        
+        btnRVPPiutangBPJS = new widget.ButtonBig();
+        btnRVPPiutangBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_pay_sale_shop_4177573.png"))); 
+        btnRVPPiutangBPJS.setText("RVP Piutang BPJS");
+        btnRVPPiutangBPJS.setIconTextGap(0);
+        btnRVPPiutangBPJS.setName("btnRVPPiutangBPJS"); 
+        btnRVPPiutangBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRVPPiutangBPJS.addActionListener(this::btnRVPPiutangBPJSActionPerformed);
+        
         btnVerifikasiPenerimaanFarmasi = new widget.ButtonBig();
         btnVerifikasiPenerimaanFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ToDoList-planing-list-planlist-todo_6071846.png")));
         btnVerifikasiPenerimaanFarmasi.setText("Verifikasi Penerimaan Obat/Alkes/BHP");
