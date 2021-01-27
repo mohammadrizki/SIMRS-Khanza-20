@@ -4597,7 +4597,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4610,7 +4610,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4750,7 +4750,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2020" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2020" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -5017,6 +5017,7 @@ public final class DlgReg extends javax.swing.JDialog {
         btnPenjab1.setBounds(852, 132, 28, 23);
 
         ChkTracker.setBorder(null);
+        ChkTracker.setSelected(true);
         ChkTracker.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkTracker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkTracker.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
