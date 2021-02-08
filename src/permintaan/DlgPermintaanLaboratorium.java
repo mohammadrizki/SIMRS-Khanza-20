@@ -1244,6 +1244,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
                 param.put("pernahdilakukandi",DilakukanPA.getText());
                 param.put("tanggalpa",(DilakukanPA.getText().equals("")?"":TanggalPA.getSelectedItem()));
                 param.put("diagnosapa",DiagnosaPA.getText());
+                param.put("nomorpa",NomorPA.getText());
                 param.put("alamat",Alamat.getText());
                 param.put("kamar",kamar);
                 param.put("namakamar",namakamar);
@@ -1685,7 +1686,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println("Error Detail : "+e);
         }
-        
     }
     
     public void emptTeks() {
