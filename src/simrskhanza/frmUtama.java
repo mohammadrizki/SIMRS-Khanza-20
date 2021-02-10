@@ -568,6 +568,7 @@ import laporan.DlgHarianKlasifikasiPasienRanap;
 import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgKlasifikasiPasienPerBangsal;
+import laporan.DlgPelayananLabPA;
 import laporan.DlgPelayananPoli;
 import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
@@ -580,6 +581,7 @@ import laporan.LaporanRekapKunjunganRuangPerTahun;
 import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
 import laporan.LaporanTahunanIRJ;
 import permintaan.DlgBookingPeriksa;
+import permintaan.DlgCariPermintaanLabPA;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
 import perpustakaan.PerpustakaanCariEbook;
@@ -1303,6 +1305,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikLimbahB3MedisPerBulan = new widget.ButtonBig();
         btnLimbahDomestik = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerTanggal = new widget.ButtonBig();
+        btnLaboratoriumPA = new widget.ButtonBig();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
         jSeparator4 = new javax.swing.JSeparator();
@@ -5551,7 +5554,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPermintaanLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
-        btnPermintaanLab.setText("Permintaan Lab");
+        btnPermintaanLab.setText("Permintaan Lab Kuantitatif");
         btnPermintaanLab.setIconTextGap(0);
         btnPermintaanLab.setName("btnPermintaanLab"); // NOI18N
         btnPermintaanLab.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5991,7 +5994,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnLamaPelayananLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnLamaPelayananLab.setText("Lama Pelayanan Lab");
+        btnLamaPelayananLab.setText("Lama Pelayanan Lab Kuantitatif");
         btnLamaPelayananLab.setIconTextGap(0);
         btnLamaPelayananLab.setName("btnLamaPelayananLab"); // NOI18N
         btnLamaPelayananLab.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6614,6 +6617,17 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikLimbahDomestikPerTanggal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikLimbahDomestikPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnLaboratoriumPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
+        btnLaboratoriumPA.setText("Periksa Lab PA");
+        btnLaboratoriumPA.setIconTextGap(0);
+        btnLaboratoriumPA.setName("btnLaboratoriumPA"); // NOI18N
+        btnLaboratoriumPA.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaboratoriumPA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaboratoriumPAActionPerformed(evt);
             }
         });
 
@@ -7776,9 +7790,10 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolIGD.setEnabled(true);
                     btnToolBcdRalan.setEnabled(true);
                     btnToolBcdRanap.setEnabled(true);
-                    btnToolLab.setEnabled(true);
                     btnPermintaanLab.setEnabled(true);
+                    btnPermintaanLabPA.setEnabled(true);
                     btnLaboratorium.setEnabled(true);
+                    btnLaboratoriumPA.setEnabled(true);
                     btnToolRad.setEnabled(true);
                     btnPermintaanRadiologi.setEnabled(true);
                     btnPeriksaRadiologi.setEnabled(true);
@@ -7843,7 +7858,9 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolBcdRalan.setEnabled(akses.getbarcoderalan());
                     btnToolBcdRanap.setEnabled(akses.getbarcoderanap());
                     btnPermintaanLab.setEnabled(akses.getpermintaan_lab());
+                    btnPermintaanLabPA.setEnabled(akses.getpermintaan_lab());
                     btnLaboratorium.setEnabled(akses.getperiksa_lab());
+                    btnLaboratoriumPA.setEnabled(akses.getperiksa_lab());
                     btnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
                     btnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());
                     btnInputPenjualan.setEnabled(akses.getpenjualan_obat());
@@ -7865,7 +7882,9 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolBcdRalan.setEnabled(false);
                     btnToolBcdRanap.setEnabled(false);
                     btnPermintaanLab.setEnabled(false);
+                    btnPermintaanLabPA.setEnabled(false);
                     btnLaboratorium.setEnabled(false);
+                    btnLaboratoriumPA.setEnabled(false);
                     btnPermintaanRadiologi.setEnabled(false);
                     btnPeriksaRadiologi.setEnabled(false);
                     btnInputPenjualan.setEnabled(false);
@@ -9296,7 +9315,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         FlayMenu.removeAll();
         FlayMenu.add(btnPermintaanLab);
+        FlayMenu.add(btnPermintaanLabPA);
         FlayMenu.add(btnLaboratorium);
+        FlayMenu.add(btnLaboratoriumPA);
         FlayMenu.setVisible(true);
     }//GEN-LAST:event_btnToolLabActionPerformed
 
@@ -16540,8 +16561,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
-    private void btnRVPPiutangBPJSActionPerformed(java.awt.event.ActionEvent evt) { 
+
+    private void btnRVPPiutangBPJSActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganRVPBPJS rbpaketbhp=new KeuanganRVPBPJS(this,false);
@@ -18878,7 +18899,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
 
             if(akses.getrvu_bpjs()==true){
-               Panelmenu.add(btnRVPPiutangBPJS); 
+               Panelmenu.add(btnRVPPiutangBPJS);
                jmlmenu++;
             }
 
@@ -22273,7 +22294,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }
 
         if(akses.getrvu_bpjs()==true){
-           Panelmenu.add(btnRVPPiutangBPJS); 
+           Panelmenu.add(btnRVPPiutangBPJS);
            jmlmenu++;
         }
 
@@ -26285,9 +26306,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getrvu_bpjs()==true){
             if(btnRVPPiutangBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-               Panelmenu.add(btnRVPPiutangBPJS); 
-               jmlmenu++; 
-            }               
+               Panelmenu.add(btnRVPPiutangBPJS);
+               jmlmenu++;
+            }
         }
 
         if(akses.getklaim_rawat_jalan()==true){
@@ -30551,15 +30572,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJamDietPasien.setName("btnJamDietPasien");
         btnJamDietPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnJamDietPasien.addActionListener(this::btnJamDietPasienActionPerformed);
-        
+
         btnRVPPiutangBPJS = new widget.ButtonBig();
-        btnRVPPiutangBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_pay_sale_shop_4177573.png"))); 
+        btnRVPPiutangBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_pay_sale_shop_4177573.png")));
         btnRVPPiutangBPJS.setText("RVP Piutang BPJS");
         btnRVPPiutangBPJS.setIconTextGap(0);
-        btnRVPPiutangBPJS.setName("btnRVPPiutangBPJS"); 
+        btnRVPPiutangBPJS.setName("btnRVPPiutangBPJS");
         btnRVPPiutangBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRVPPiutangBPJS.addActionListener(this::btnRVPPiutangBPJSActionPerformed);
-        
+
         btnVerifikasiPenerimaanFarmasi = new widget.ButtonBig();
         btnVerifikasiPenerimaanFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ToDoList-planing-list-planlist-todo_6071846.png")));
         btnVerifikasiPenerimaanFarmasi.setText("Verifikasi Penerimaan Obat/Alkes/BHP");
