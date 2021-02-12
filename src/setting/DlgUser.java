@@ -174,7 +174,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Klasifikasi Pasien Ranap","[I]Bulanan Klasifikasi Pasien Ranap","[I]Harian Klasifikasi Pasien Ranap","[I]Klasifikasi Pasien Per Ruang",
                 "[L]SOAP Perawatan","[J]Klaim Rawat Jalan","[L]Skrining Gizi Lanjut","[I]Lama Penyiapan RM","[I]Dosis Radiologi","[I]Demografi Umur Kunjungan",
                 "[S]Jam Diet Pasien","[J]RVP Piutang BPJS","[D]Verifikasi Penerimaan Obat/Alkes/BHP","[E]Verifikasi Penerimaan Non Medis","[A]Periksa Lab PA",
-                "[D]Ringkasan Pengajuan Obat & BHP","[D]Ringkasan Pemesanan Obat & BHP"
+                "[D]Ringkasan Pengajuan Obat & BHP","[D]Ringkasan Pemesanan Obat & BHP","[D]Ringkasan Pengadaan Obat & BHP","[D]Ringkasan Penerimaan Obat & BHP",
+                "[D]Ringkasan Hibah Obat & BHP"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -377,7 +378,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 684;i++) {
+        for (i = 0; i < 687;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -1883,6 +1884,15 @@ public class DlgUser extends javax.swing.JDialog {
                 case 683:
                     column.setPreferredWidth(190);
                     break;
+                case 684:
+                    column.setPreferredWidth(188);
+                    break;
+                case 685:
+                    column.setPreferredWidth(192);
+                    break;
+                case 686:
+                    column.setPreferredWidth(162);
+                    break;
                 default:
                     column.setPreferredWidth(130);
                     break;
@@ -2379,7 +2389,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3105,7 +3116,10 @@ public class DlgUser extends javax.swing.JDialog {
                     "verifikasi_penerimaan_logistik='"+tbUser.getValueAt(i,680).toString()+"',"+
                     "pemeriksaan_lab_pa='"+tbUser.getValueAt(i,681).toString()+"',"+
                     "ringkasan_pengajuan_obat='"+tbUser.getValueAt(i,682).toString()+"',"+
-                    "ringkasan_pemesanan_obat='"+tbUser.getValueAt(i,683).toString()+"'");
+                    "ringkasan_pemesanan_obat='"+tbUser.getValueAt(i,683).toString()+"',"+
+                    "ringkasan_pengadaan_obat='"+tbUser.getValueAt(i,684).toString()+"',"+
+                    "ringkasan_penerimaan_obat='"+tbUser.getValueAt(i,685).toString()+"',"+
+                    "ringkasan_hibah_obat='"+tbUser.getValueAt(i,686).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3870,7 +3884,10 @@ public class DlgUser extends javax.swing.JDialog {
                                     "verifikasi_penerimaan_logistik='"+tbUser.getValueAt(barisdicopy,680).toString()+"',"+
                                     "pemeriksaan_lab_pa='"+tbUser.getValueAt(barisdicopy,681).toString()+"',"+
                                     "ringkasan_pengajuan_obat='"+tbUser.getValueAt(barisdicopy,682).toString()+"',"+
-                                    "ringkasan_pemesanan_obat='"+tbUser.getValueAt(barisdicopy,683).toString()+"'");
+                                    "ringkasan_pemesanan_obat='"+tbUser.getValueAt(barisdicopy,683).toString()+"',"+
+                                    "ringkasan_pengadaan_obat='"+tbUser.getValueAt(barisdicopy,684).toString()+"',"+
+                                    "ringkasan_penerimaan_obat='"+tbUser.getValueAt(barisdicopy,685).toString()+"',"+
+                                    "ringkasan_hibah_obat='"+tbUser.getValueAt(barisdicopy,686).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4197,7 +4214,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "bulanan_klasifikasi_pasien_ranap,harian_klasifikasi_pasien_ranap,klasifikasi_pasien_perbangsal,soap_perawatan,"+
                         "klaim_rawat_jalan,skrining_gizi,lama_penyiapan_rm,dosis_radiologi,demografi_umur_kunjungan,jam_diet_pasien,"+
                         "rvu_bpjs,verifikasi_penerimaan_farmasi,verifikasi_penerimaan_logistik,pemeriksaan_lab_pa,ringkasan_pengajuan_obat,"+
-                        "ringkasan_pemesanan_obat from user order by AES_DECRYPT(id_user,'nur')");
+                        "ringkasan_pemesanan_obat,ringkasan_pengadaan_obat,ringkasan_penerimaan_obat,ringkasan_hibah_obat from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4893,7 +4910,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("verifikasi_penerimaan_logistik"),
                                rs.getBoolean("pemeriksaan_lab_pa"),
                                rs.getBoolean("ringkasan_pengajuan_obat"),
-                               rs.getBoolean("ringkasan_pemesanan_obat")
+                               rs.getBoolean("ringkasan_pemesanan_obat"),
+                               rs.getBoolean("ringkasan_pengadaan_obat"),
+                               rs.getBoolean("ringkasan_penerimaan_obat"),
+                               rs.getBoolean("ringkasan_hibah_obat")
                             });
                         }   
                     } catch (Exception e) {
@@ -5578,7 +5598,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("verifikasi_penerimaan_logistik"),
                            rs.getBoolean("pemeriksaan_lab_pa"),
                            rs.getBoolean("ringkasan_pengajuan_obat"),
-                           rs.getBoolean("ringkasan_pemesanan_obat")
+                           rs.getBoolean("ringkasan_pemesanan_obat"),
+                           rs.getBoolean("ringkasan_pengadaan_obat"),
+                           rs.getBoolean("ringkasan_penerimaan_obat"),
+                           rs.getBoolean("ringkasan_hibah_obat")
                         });
                     }                                             
                  }
