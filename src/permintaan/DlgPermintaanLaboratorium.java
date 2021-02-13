@@ -2105,7 +2105,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         })==true){
                         for(i=0;i<tbTarif2.getRowCount();i++){ 
                             if(tbTarif2.getValueAt(i,0).toString().equals("true")){
-                                Sequel.menyimpan2("permintaan_pemeriksaan_labpa","?,?,?","pemeriksaan lab PA",3,new String[]{
+                                Sequel.menyimpan2("permintaan_pemeriksaan_labpa","?,?,?","pemeriksaan Lab Deskriptif",3,new String[]{
                                     TNoPermintaan2.getText(),tbTarif2.getValueAt(i,1).toString(),"Belum"
                                 });
                             }                        
@@ -2122,7 +2122,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         })==true){
                             for(i=0;i<tbTarif2.getRowCount();i++){ 
                                 if(tbTarif2.getValueAt(i,0).toString().equals("true")){
-                                    Sequel.menyimpan2("permintaan_pemeriksaan_labpa","?,?,?","pemeriksaan lab PA",3,new String[]{
+                                    Sequel.menyimpan2("permintaan_pemeriksaan_labpa","?,?,?","pemeriksaan Lab Deskriptif",3,new String[]{
                                         TNoPermintaan2.getText(),tbTarif2.getValueAt(i,1).toString(),"Belum"
                                     });
                                 }                        
@@ -2139,7 +2139,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             })==true){
                                 for(i=0;i<tbTarif2.getRowCount();i++){ 
                                     if(tbTarif2.getValueAt(i,0).toString().equals("true")){
-                                        Sequel.menyimpan2("permintaan_pemeriksaan_labpa","?,?,?","pemeriksaan lab PA",3,new String[]{
+                                        Sequel.menyimpan2("permintaan_pemeriksaan_labpa","?,?,?","pemeriksaan Lab Deskriptif",3,new String[]{
                                             TNoPermintaan2.getText(),tbTarif2.getValueAt(i,1).toString(),"Belum"
                                         });
                                     }                        

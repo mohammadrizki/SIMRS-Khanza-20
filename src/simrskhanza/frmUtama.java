@@ -2248,7 +2248,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
-        btnLaboratorium.setText("Periksa Lab PK");
+        btnLaboratorium.setText("Periksa Lab");
         btnLaboratorium.setIconTextGap(0);
         btnLaboratorium.setName("btnLaboratorium"); // NOI18N
         btnLaboratorium.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5559,7 +5559,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPermintaanLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
-        btnPermintaanLab.setText("Permintaan Lab PK");
+        btnPermintaanLab.setText("Permintaan Lab");
         btnPermintaanLab.setIconTextGap(0);
         btnPermintaanLab.setName("btnPermintaanLab"); // NOI18N
         btnPermintaanLab.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5999,7 +5999,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnLamaPelayananLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnLamaPelayananLab.setText("Lama Pelayanan Lab PK");
+        btnLamaPelayananLab.setText("Lama Pelayanan Lab");
         btnLamaPelayananLab.setIconTextGap(0);
         btnLamaPelayananLab.setName("btnLamaPelayananLab"); // NOI18N
         btnLamaPelayananLab.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6626,7 +6626,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnLaboratoriumPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
-        btnLaboratoriumPA.setText("Periksa Lab PA");
+        btnLaboratoriumPA.setText("Periksa Lab Deskriptif");
         btnLaboratoriumPA.setIconTextGap(0);
         btnLaboratoriumPA.setName("btnLaboratoriumPA"); // NOI18N
         btnLaboratoriumPA.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -30799,7 +30799,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         btnPermintaanLabPA = new widget.ButtonBig();
         btnPermintaanLabPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
-        btnPermintaanLabPA.setText("Permintaan Lab PA");
+        btnPermintaanLabPA.setText("Permintaan Lab Deskriptif");
         btnPermintaanLabPA.setIconTextGap(0);
         btnPermintaanLabPA.setName("btnPermintaanLabPA");
         btnPermintaanLabPA.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -30807,7 +30807,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         btnLamaPelayananLabPA = new widget.ButtonBig();
         btnLamaPelayananLabPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnLamaPelayananLabPA.setText("Lama Pelayanan Lab PA");
+        btnLamaPelayananLabPA.setText("Lama Pelayanan Lab Deskriptif");
         btnLamaPelayananLabPA.setIconTextGap(0);
         btnLamaPelayananLabPA.setName("btnLamaPelayananLabPA");
         btnLamaPelayananLabPA.setPreferredSize(new java.awt.Dimension(200, 90));
