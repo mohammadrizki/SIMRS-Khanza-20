@@ -3265,7 +3265,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
                 dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","-","-");
                 dlgrwjl.isCek();
-                dlgrwjl.tampil();
                 dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                 dlgrwjl.setLocationRelativeTo(internalFrame1);
                 dlgrwjl.setAlwaysOnTop(false);
