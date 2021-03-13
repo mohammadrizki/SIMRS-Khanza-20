@@ -185,7 +185,7 @@ public final class DlgReg extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "P","No.Reg","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Dituju","Nomer RM",
             "Pasien","J.K.","Umur","Poliklinik","Jenis Bayar","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
-            "Biaya Regristrasi","Status","No.Telp","Stts Rawat","Stts Poli","Kode Poli","Kode PJ","Status Bayar"
+            "Biaya Registrasi","Status","No.Telp","Stts Rawat","Stts Poli","Kode Poli","Kode PJ","Status Bayar"
         }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -5260,7 +5260,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoReg.getText().trim().equals("")){
-            Valid.textKosong(TNoReg,"No.Regristrasi");
+            Valid.textKosong(TNoReg,"No.Registrasi");
         }else if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
         }else if(TDokter.getText().trim().equals("")){
@@ -5270,7 +5270,7 @@ public final class DlgReg extends javax.swing.JDialog {
         }else if(TPoli.getText().trim().equals("")){
             Valid.textKosong(kdpoli,"poliklinik");
         }else if(TBiaya.getText().trim().equals("")){
-            Valid.textKosong(TBiaya,"biaya regristrasi");
+            Valid.textKosong(TBiaya,"biaya registrasi");
         }else if(kdpnj.getText().trim().equals("")||nmpnj.getText().trim().equals("")){
             Valid.textKosong(kdpnj,"Jenis Bayar");
         }else if(Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "+
@@ -5443,7 +5443,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoReg.getText().trim().equals("")){
-            Valid.textKosong(TNoReg,"No.Regristrasi");
+            Valid.textKosong(TNoReg,"No.Registrasi");
         }else if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
         }else if(TDokter.getText().trim().equals("")){
@@ -5453,7 +5453,7 @@ public final class DlgReg extends javax.swing.JDialog {
         }else if(TPoli.getText().trim().equals("")){
             Valid.textKosong(kdpoli,"poliklinik");
         }else if(TBiaya.getText().trim().equals("")){
-            Valid.textKosong(TBiaya,"biaya regristrasi");
+            Valid.textKosong(TBiaya,"biaya registrasi");
         }else{
             if(tbPetugas.getSelectedRow()>-1){
                 if(Sequel.cariRegistrasi(TNoRw.getText())>0){

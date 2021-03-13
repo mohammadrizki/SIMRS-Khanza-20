@@ -5046,7 +5046,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         }else if((chkPolri.isSelected()==true)&&nmjabatanpolri.getText().trim().equals("")){
             Valid.textKosong(nmjabatanpolri,"Jabatan POLRI");
         }else if(TNoReg.getText().trim().equals("")){
-            Valid.textKosong(TNoReg,"No.Regristrasi");
+            Valid.textKosong(TNoReg,"No.Registrasi");
         }else if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
         }else if(TDokter.getText().trim().equals("")){
